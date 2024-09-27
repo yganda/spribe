@@ -1,0 +1,21 @@
+@if(inProgressOfSubmit) {
+  <button type="button" class="btn btn-danger" (click)="cancelSubmit()">Cancel</button>
+  <span class="timer">00 : 0{{remainingTime}}</span>
+} @else {
+  <button
+    type="button"
+    [disabled]="!cards.length || cards.invalid"
+    class="btn btn-primary"
+    (click)="submitAllForms()">Submit all forms</button>
+  <span *ngIf="cards.invalid" class="invalid-count">Invalid Forms: {{getErrorsCount()}}</span>
+}
+<div class="card-list">
+  <app-card *ngFor="let card of cards.controls; let i = index"
+               (cardToRemove)="removeCard($event)"
+               [disabled]="inProgressOfSubmit"
+               [card]="card"
+               [cardId]="i"/>
+  <div *ngIf="cards.controls.length < 10 && !inProgressOfSubmit" class="add-card" (click)="addCard()">
+    <div class="add-card-plus">+</div>
+  </div>
+</div>

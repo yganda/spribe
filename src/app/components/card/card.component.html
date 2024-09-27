@@ -1,0 +1,44 @@
+<form [formGroup]="card" class="card-item">
+  <div *ngIf="!disabled" class="card-remove" (click)="removeCard()">X</div>
+  <div class="col-12 card-row">
+    <label for="country" class="col-xs-3 col-sm-auto col-form-label">Country </label>
+    <input id="country"
+      class="form-control"
+      type="text"
+      appErrorHandle
+      [ngClass]="{'error-input': card.controls.country.invalid && (card.controls.country.dirty || card.controls.country.touched)}"
+      [ngbTypeahead]="search"
+		  [selectOnExact]="true"
+      formControlName="country">
+  </div>
+  <div class="col-12 card-row">
+    <label for="username" class="col-xs-3 col-sm-auto col-form-label">Username </label>
+    <input id="username"
+      class="form-control"
+      type="text"
+      [ngClass]="{'error-input': card.controls.userName.invalid && (card.controls.userName.dirty || card.controls.userName.touched)}"
+      formControlName="userName"
+      appErrorHandle>
+  </div>
+  <div class="col-12 card-row">
+    <label for="birthday" class="col-xs-3 col-sm-auto col-form-label">Birthday </label>
+
+    <div class="col-12">
+      <div class="input-group">
+        <input
+          class="form-control"
+          placeholder="yyyy-mm-dd"
+          name="dp"
+          [maxDate]="today"
+          id="birthday"
+          appErrorHandle
+          [ngClass]="{'error-input': card.controls.birthday.invalid && (card.controls.birthday.dirty || card.controls.birthday.touched)}"
+          formControlName="birthday"
+          ngbDatepicker
+          #d="ngbDatepicker"
+        />
+        <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+      </div>
+    </div>
+  </div>
+</form>

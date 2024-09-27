@@ -1,0 +1,28 @@
+.card-item {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  border: solid var(--bs-border-color);
+  border-radius: 5px;
+  padding: 10px 15px 30px 15px;
+  margin: 1rem;
+  position: relative;
+}
+
+.errors {
+  color: var(--bs-danger);
+}
+
+.error-input {
+  border-color: var(--bs-danger);
+}
+
+.card-row {
+  height: 100px;
+}
+
+.card-remove {
+  position: absolute;
+  right: 16px;
+  cursor: pointer;
+}
